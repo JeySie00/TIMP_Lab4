@@ -19,7 +19,10 @@ jobs:
     - name: Create and build formatter_lib
       working-directory: formatter_lib
       run: cmake -H. -Bbuild
-    - run: cmake --build build  
+      
+    - name: Create and build formatter_lib
+      working-directory: formatter_lib
+      run: cmake --build build 
     
     - name: Create and build formatter_ex_lib
       working-directory: formatter_ex_lib
