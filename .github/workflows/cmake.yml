@@ -1,0 +1,37 @@
+name: CMake
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - working-directory: formatter_lib
+    - run: cmake -H. -Bbuild
+    - run: cmake --build build
+    
+    - working-directory: formatter_ex_lib
+    - run: cmake -H. -Bbuild
+    - run: cmake --build build
+    
+    - working-directory: hello_world_application
+    - run: cmake -H. -Bbuild
+    - run: cmake --build build
+    
+    - working-directory: solver_lib
+    - run: cmake -H. -Bbuild
+    - run: cmake --build build
+    
+    - working-directory: solver_application
+    - run: cmake -H. -Bbuild
+    - run: cmake --build build
